@@ -153,7 +153,7 @@ with tabs[1]:
 
 with tabs[2]:
     st.subheader("🔍 Search History")
-    df = fetch_table("SELECT * FROM search_history ORDER BY searched_at DESC;")
+    df = fetch_table("SELECT l.id,l.user_id,u.username,l.login_time,l.ip_address FROM login_history l JOIN users u ON l.user_id = u.user_id ORDER BY l.id DESC;")
     st.dataframe(df, use_container_width=True)
     st.download_button("⬇ Download Search History", df.to_csv(index=False).encode("utf-8"), "search_history.csv")
 
@@ -167,6 +167,7 @@ with tabs[2]:
 if st.button("🚪 Logout Admin"):
     st.session_state.admin_logged = False
     st.experimental_rerun()
+
 
 
 
