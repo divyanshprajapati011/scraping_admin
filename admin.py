@@ -89,7 +89,7 @@ import pandas as pd
 # ================== DB CONNECTION ==================
 def get_connection():
     return psycopg2.connect(
-        user: "postgres.fpkyghloouywbxbdmqlp",
+        user = "postgres.fpkyghloouywbxbdmqlp",
         password="@Deep7067",  # change this if needed
         host="aws-1-ap-south-1.pooler.supabase.com",
         port="6543",
@@ -166,5 +166,6 @@ with tabs[3]:
 if st.button("🚪 Logout Admin"):
     st.session_state.admin_logged = False
     st.experimental_rerun()
+
 
 
