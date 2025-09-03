@@ -141,7 +141,7 @@ tabs = st.tabs(["👤 Users", "📌 Login History", "🔍 Search History"])
 # , "📊 Scraping Results"
 with tabs[0]:
     st.subheader("👤 Registered Users")
-    df = fetch_table("SELECT user_id, username, email, created_at FROM users ORDER BY user_id DESC;")
+    df = fetch_table("SELECT user_id, username, email, mobile_number ,created_at FROM users ORDER BY user_id DESC;")
     st.dataframe(df, use_container_width=True)
     st.download_button("⬇ Download Users", df.to_csv(index=False).encode("utf-8"), "users.csv")
 
@@ -167,6 +167,7 @@ with tabs[2]:
 if st.button("🚪 Logout Admin"):
     st.session_state.admin_logged = False
     st.experimental_rerun()
+
 
 
 
