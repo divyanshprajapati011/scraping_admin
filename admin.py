@@ -137,8 +137,8 @@ def fetch_table(query):
     return pd.DataFrame(rows, columns=cols)
 
 # ================== ADMIN DASHBOARD ==================
-tabs = st.tabs(["👤 Users", "📌 Login History", "🔍 Search History", "📊 Scraping Results"])
-
+tabs = st.tabs(["👤 Users", "📌 Login History", "🔍 Search History"])
+# , "📊 Scraping Results"
 with tabs[0]:
     st.subheader("👤 Registered Users")
     df = fetch_table("SELECT user_id, username, email, created_at FROM users ORDER BY user_id DESC;")
@@ -157,11 +157,11 @@ with tabs[2]:
     st.dataframe(df, use_container_width=True)
     st.download_button("⬇ Download Search History", df.to_csv(index=False).encode("utf-8"), "search_history.csv")
 
-with tabs[3]:
-    st.subheader("📊 Scraping Results")
-    df = fetch_table("SELECT * FROM scraping_results ORDER BY scraped_at DESC;")
-    st.dataframe(df, use_container_width=True)
-    st.download_button("⬇ Download Scraping Results", df.to_csv(index=False).encode("utf-8"), "scraping_results.csv")
+# with tabs[3]:
+#     st.subheader("📊 Scraping Results")
+#     df = fetch_table("SELECT * FROM scraping_results ORDER BY scraped_at DESC;")
+#     st.dataframe(df, use_container_width=True)
+#     st.download_button("⬇ Download Scraping Results", df.to_csv(index=False).encode("utf-8"), "scraping_results.csv")
 
 # ================== LOGOUT ==================
 if st.button("🚪 Logout Admin"):
